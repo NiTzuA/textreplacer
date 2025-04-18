@@ -65,6 +65,7 @@ namespace textreplacernitzua
         }
 
         private KeyboardHook _hook;
+        private const int charHistoryLength = 100;
 
         public Form1()
         {
@@ -166,11 +167,11 @@ namespace textreplacernitzua
                 if (keyChar.HasValue && key != Keys.Back)
                 {
                     charQueue.Add(keyChar.Value);
-                    while (charQueue.Count > textLength)
+                    while (charQueue.Count > charHistoryLength)
                     {
                         charQueue.RemoveAt(0);
                     }
-                    if (new String(charQueue.ToArray()) == normalText)
+                    if (new String(charQueue.Skip(Math.Max(0, charQueue.Count - normalText.Length)).ToArray()) == normalText)
                     {
                         this.BeginInvoke((MethodInvoker)delegate
                         {
