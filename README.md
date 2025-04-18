@@ -12,7 +12,7 @@
 
 <p>However, this was just a program I made out of boredom, so the following problems and limitations are present</p>
 <ol>
-  <li>It overrides you clipboard. (I made the text replacement faster to avoid users accidentally interrupting the sendkey operation by doing SetClipboard then SendKeys.Keys("^v")</li>
+  <li>(THIS HAS BEEN FIXED) It overrides you clipboard. (I made the text replacement faster to avoid users accidentally interrupting the sendkey operation by doing SetClipboard then SendKeys.Keys("^v")</li>
   <li>While the current backspace operation is fast since it uses ^{BACKSPACE}, fast typers can still accidentally override this.</li>
 </ol>
 
