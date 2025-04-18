@@ -16,3 +16,4 @@
   <li>While the current backspace operation is fast since it uses ^{BACKSPACE}, fast typers can still accidentally override this.</li>
 </ol>
 
+![ezgif-761ceceaed5e0a](https://github.com/user-attachments/assets/5a18d3d7-6cd2-4b1b-b5b7-41b8c58e585a)
