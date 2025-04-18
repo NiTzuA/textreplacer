@@ -149,7 +149,7 @@ namespace textreplacernitzua
 
         private void startButton_Click_1(object sender, EventArgs e)
         {
-            Queue<char> charQueue = new Queue<char>();
+            List<char> charQueue = new List<char>(); // replace this with a List, so that we can both do FIFO and LIFO
             String normalText = normalTextBox.Text;
             String replaceText = replaceTextBox.Text;
             int textLength = normalText.Length;
@@ -162,13 +162,13 @@ namespace textreplacernitzua
             {
                 bool shiftPressed = (Control.ModifierKeys & Keys.Shift) != 0;
                 char? keyChar = KeyToChar(key, shiftPressed);
-
-                if (keyChar.HasValue)
+                
+                if (keyChar.HasValue && key != Keys.Back)
                 {
-                    charQueue.Enqueue(keyChar.Value);
+                    charQueue.Add(keyChar.Value);
                     while (charQueue.Count > textLength)
                     {
-                        charQueue.Dequeue();
+                        charQueue.RemoveAt(0);
                     }
                     if (new String(charQueue.ToArray()) == normalText)
                     {
@@ -182,6 +182,9 @@ namespace textreplacernitzua
                             SendKeys.Send("^v");
                         });
                     }
+                } else if (key == Keys.Back && charQueue.Count > 0)
+                {
+                    charQueue.RemoveAt(charQueue.Count - 1);
                 }
             };
         }
