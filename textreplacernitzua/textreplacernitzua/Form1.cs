@@ -181,8 +181,10 @@ namespace textreplacernitzua
                             {
                                 SendKeys.Send("^{BACKSPACE}");
                             }
+                            String userClipboard = Clipboard.GetText();
                             Clipboard.SetText(replaceText);
                             SendKeys.Send("^v");
+                            Clipboard.SetText(userClipboard);
                         });
                     }
                 } else if (key == Keys.Back && charQueue.Count > 0)
