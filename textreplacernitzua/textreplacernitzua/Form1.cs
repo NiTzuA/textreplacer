@@ -144,6 +144,8 @@ namespace textreplacernitzua
         private void stopButton_Click(object sender, EventArgs e)
         {
             startButton.Enabled = true;
+            normalTextBox.Enabled = true;
+            replaceTextBox.Enabled = true;
             MessageBox.Show("Stopped replacing text");
             _hook.Dispose();
         }
