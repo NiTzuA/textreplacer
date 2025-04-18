@@ -155,6 +155,8 @@ namespace textreplacernitzua
             String replaceText = replaceTextBox.Text;
             int textLength = normalText.Length;
             startButton.Enabled = false;
+            normalTextBox.Enabled = false;
+            replaceTextBox.Enabled = false;
 
             MessageBox.Show(normalText + " will now be replaced with " + replaceText);
 
@@ -247,6 +249,11 @@ namespace textreplacernitzua
         }
 
         private void replaceTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void replaceText_Click(object sender, EventArgs e)
         {
 
         }

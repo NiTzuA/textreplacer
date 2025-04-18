@@ -50,7 +50,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 10);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(243, 154);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(398, 154);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // normalText
@@ -66,7 +66,7 @@
             // 
             this.normalTextBox.Location = new System.Drawing.Point(3, 18);
             this.normalTextBox.Name = "normalTextBox";
-            this.normalTextBox.Size = new System.Drawing.Size(237, 23);
+            this.normalTextBox.Size = new System.Drawing.Size(392, 23);
             this.normalTextBox.TabIndex = 1;
             this.normalTextBox.TextChanged += new System.EventHandler(this.normalTextBox_TextChanged);
             // 
@@ -77,13 +77,14 @@
             this.replaceText.Name = "replaceText";
             this.replaceText.Size = new System.Drawing.Size(76, 15);
             this.replaceText.TabIndex = 2;
-            this.replaceText.Text = "Raplace With";
+            this.replaceText.Text = "Replace With";
+            this.replaceText.Click += new System.EventHandler(this.replaceText_Click);
             // 
             // replaceTextBox
             // 
             this.replaceTextBox.Location = new System.Drawing.Point(3, 62);
             this.replaceTextBox.Name = "replaceTextBox";
-            this.replaceTextBox.Size = new System.Drawing.Size(237, 23);
+            this.replaceTextBox.Size = new System.Drawing.Size(392, 23);
             this.replaceTextBox.TabIndex = 3;
             this.replaceTextBox.TextChanged += new System.EventHandler(this.replaceTextBox_TextChanged);
             // 
@@ -91,7 +92,7 @@
             // 
             this.startButton.Location = new System.Drawing.Point(3, 91);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(237, 23);
+            this.startButton.Size = new System.Drawing.Size(392, 23);
             this.startButton.TabIndex = 4;
             this.startButton.Text = "Start Replacing";
             this.startButton.UseVisualStyleBackColor = true;
@@ -101,7 +102,7 @@
             // 
             this.stopButton.Location = new System.Drawing.Point(3, 120);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(237, 23);
+            this.stopButton.Size = new System.Drawing.Size(392, 23);
             this.stopButton.TabIndex = 5;
             this.stopButton.Text = "Stop Replacing";
             this.stopButton.UseVisualStyleBackColor = true;
@@ -111,11 +112,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 174);
+            this.ClientSize = new System.Drawing.Size(418, 174);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(10);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NiTzuA\'s Text Replacer";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
