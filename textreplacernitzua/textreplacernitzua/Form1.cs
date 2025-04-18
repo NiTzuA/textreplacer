@@ -142,6 +142,7 @@ namespace textreplacernitzua
 
         private void stopButton_Click(object sender, EventArgs e)
         {
+            startButton.Enabled = true;
             MessageBox.Show("Stopped replacing text");
             _hook.Dispose();
         }
@@ -152,6 +153,7 @@ namespace textreplacernitzua
             String normalText = normalTextBox.Text;
             String replaceText = replaceTextBox.Text;
             int textLength = normalText.Length;
+            startButton.Enabled = false;
 
             MessageBox.Show(normalText + " will now be replaced with " + replaceText);
 
@@ -170,18 +172,69 @@ namespace textreplacernitzua
                     }
                     if (new String(charQueue.ToArray()) == normalText)
                     {
-                        // MessageBox.Show("Text Detected: " + new String(charQueue.ToArray()));
                         this.BeginInvoke((MethodInvoker)delegate
                         {
-                            for (int i = 0; i < textLength; i++)
+                            for (int i = 0; i < calculateBackspaces(normalText); i++)
                             {
-                                SendKeys.Send("{BACKSPACE}");
+                                SendKeys.Send("^{BACKSPACE}");
                             }
-                            SendKeys.Send(replaceText);
+                            Clipboard.SetText(replaceText);
+                            SendKeys.Send("^v");
                         });
                     }
                 }
             };
+        }
+
+        private int calculateBackspaces(string text)
+        {
+            if (text.Length == 0) return 0;
+            int backSpaceCount = 0;
+            bool inWord = false;
+            HashSet<char> backSpaceDelimiters = new HashSet<char>()
+            {
+                {' '},
+                { '-' },
+                { '/' },
+                { '.' },
+                { '_' },
+                { ':' },
+                { ',' },
+                { ';' },
+                { '=' },
+                { '(' },
+                { ')' },
+                { '[' },
+                { ']' },
+                { '{' },
+                { '}' },
+                { '!' },
+                { '@' },
+                { '#' },
+                { '$' },
+                { '%' },
+                { '&' },
+                { '*' },
+                { '+' },
+                { '^' },
+                { '\\' },
+            };
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (!backSpaceDelimiters.Contains(text[i])) {
+                    if (!inWord)
+                    {
+                        inWord = true;
+                        backSpaceCount++;
+                    }
+                }
+                else
+                {
+                    inWord = false;
+                }
+            } 
+            return backSpaceCount;
         }
 
         private void normalTextBox_TextChanged(object sender, EventArgs e)
